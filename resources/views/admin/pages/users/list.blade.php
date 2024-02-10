@@ -24,7 +24,7 @@
                     <tr>
                         <th scope="row">{{$key+1}}</th>
                         <td>{{$user->name}}</td>
-                        <td>{{$user->role}}</td>
+                        <td>{{$user->role->name}}</td>
                         <td>0{{$user->phone}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->address}}</td>
@@ -32,9 +32,9 @@
                             <img style="border-radius: 60px;" width="15%" src="{{url('/uploads/'.$user->image)}}" alt="image">
                         </td>
                         <td>
-                            <a class="btn btn-primary" href="#">View</a>
-                            <a class="btn btn-success" href="#">Edit</a>
-                            <a class="btn btn-danger" href="#">Delete</a>
+                            <a class="btn btn-primary" href="{{route('user.view', $user->id)}}">View</a>
+                            <a class="btn btn-success" href="{{route('user.edit', $user->id)}}">Edit</a>
+                            <a class="btn btn-danger" href="{{route('user.delete', $user->id)}}">Delete</a>
                         </td>
                     </tr>
                     @endforeach

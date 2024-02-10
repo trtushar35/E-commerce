@@ -21,6 +21,61 @@ class UserController extends Controller
         return view('admin.pages.users.create');
     }
 
+    public function view($id)
+    {
+        $users = User::find($id);
+        return view('admin.pages.users.view', compact('users'));
+    }
+
+
+    public function edit($id)
+    {
+        $users = User::find($id);
+        return view('admin.pages.users.edit', compact('users'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        // dd($request->all());
+        $users = User::find($id);
+
+        if ($users) {
+            $fileName = $users->user_image;
+
+            if ($request->hasFile('user_image')) {
+                $file = $request->file('user_image');
+                $fileName = date('Ymdhis') . '.' . $file->getClientOriginalExtension();
+
+                $file->storeAs('/uploads', $fileName);
+            }
+
+            $users->update([
+                'name' => $request->user_name,
+                'email' => $request->user_email,
+                'phone' => $request->phone,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'image' => $fileName,
+            ]);
+
+            notify()->success('Profile updated successfully.');
+            return redirect()->route('users.list');
+        }
+    }
+
+
+    public function delete($id)
+    {
+        $users = User::find($id);
+
+        if ($users) {
+            $users->delete();
+        }
+        notify()->success('User deleted successfully.');
+        return redirect()->back();
+    }
+
     public function store(Request $request)
     {
         // dd($request->all());
@@ -57,7 +112,7 @@ class UserController extends Controller
             'address' => $request->address,
             'password' => bcrypt($request->user_password),
         ]);
-        
+
         notify()->success('User created Successful.');
         return redirect()->route('users.list');
     }
@@ -70,23 +125,21 @@ class UserController extends Controller
     public function loginPost(Request $request)
     {
         // dd($request->all());
-        $validate = Validator::make($request->all(),[
+        $validate = Validator::make($request->all(), [
 
-            'email'=>'required|email',
-            'password'=>'required|min:6',
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
 
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             notify()->error('Invalid Credentials.');
             return redirect()->back();
         }
 
-        $credentials=$request->except('_token');
+        $credentials = $request->except('_token');
 
-        $login=auth()->attempt($credentials);
-        if($login)
-        {   
+        $login = auth()->attempt($credentials);
+        if ($login) {
             notify()->success('Login Successful.');
             return redirect()->route('dashboard');
         }

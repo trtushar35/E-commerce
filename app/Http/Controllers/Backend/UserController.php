@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +18,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.pages.users.create');
+        $roles = Role::all();
+        return view('admin.pages.users.create', compact('roles'));
     }
 
     public function view($id)
@@ -82,7 +83,7 @@ class UserController extends Controller
 
         $validate = Validator::make($request->all(), [
             'user_name' => 'required',
-            'role' => 'required',
+            'role_id' => 'required',
             'user_email' => 'required|email',
             'phone' => 'required|max:11',
             'address' => 'required',
@@ -90,7 +91,7 @@ class UserController extends Controller
         ]);
 
         if ($validate->fails()) {
-            notify()->error('Give the Valid information.');
+            notify()->error($validate->getMessageBag());
             return redirect()->back();
         }
 
@@ -105,7 +106,7 @@ class UserController extends Controller
 
         User::create([
             'name' => $request->user_name,
-            'role' => $request->role,
+            'role_id' => $request->role_id,
             'image' => $fileName,
             'phone' => $request->phone,
             'email' => $request->user_email,
@@ -141,7 +142,7 @@ class UserController extends Controller
         $login = auth()->attempt($credentials);
         if ($login) {
             notify()->success('Login Successful.');
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         notify()->error('Invalid user email or password.');

@@ -76,7 +76,11 @@
                             <label style="font-weight:bold;">Role</label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->role->name }}
+                           @if (auth('customerGuard')->check() && auth('customerGuard')->user()->role)
+                           {{ auth('customerGuard')->user()->role->name }}
+                           @else
+                           no role
+                           @endif 
                         </div>
                     </div>
                     </hr>

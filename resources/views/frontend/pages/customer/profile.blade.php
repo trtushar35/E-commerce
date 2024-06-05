@@ -1,19 +1,17 @@
-@extends('frontend.master')
+@include('frontend.partial.header')
 
-@section('content')
-
-<div class="container">
-    <div class="row">
+<div class="container shadow mb-2 mt-2 ">
+    <div class="row ">
         <div class="col-12">
-            <div class="card">
+            <div class="card mb-3 mt-3 ">
 
                 <div class="card-body">
                     <div class="card-title mb-4">
                         <div class="d-flex justify-content-start">
                             <div class="image-container">
-                                <img src="{{url('/uploads/'. auth()->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
+                                <img src="{{url('/uploads/'. auth('customerGuard')->user()->image)}}" alt="Upload Image" class="rounded-circle" width="150">
                                 <div class="middle">
-                                    <a class="btn btn-success" href="{{route('profile.edit',auth()->user()->id)}}">Edit</a>
+                                    <a class="btn btn-success" href="{{route('profile.edit',auth('customerGuard')->user()->id)}}">Edit</a>
                                 </div>
                             </div>
                             <div class="userData ml-3">
@@ -24,13 +22,14 @@
 
                         </div>
                     </div>
-
+                    @foreach ($customer as $data)
+                            
                     <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
                             <label style="font-weight:bold;">Full Name</label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->name }}
+                            {{ $data->name }}
                         </div>
                     </div>
                     <hr />
@@ -40,7 +39,7 @@
                             <label style="font-weight:bold;">Email</label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->email }}
+                            {{ $data->email }}
                         </div>
                     </div>
                     <hr />
@@ -50,7 +49,7 @@
                             <label style="font-weight:bold;">Phone Number</label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->phone }}
+                            0{{ $data->phone }}
                         </div>
                     </div>
                     <hr />
@@ -60,22 +59,24 @@
                             <label style="font-weight:bold;">Address </label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->address }}
+                            {{ $data->address }}
                         </div>
                     </div>
-                    <hr />
+                    <hr>
 
                     <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
                             <label style="font-weight:bold;">Role</label>
                         </div>
                         <div class="col-md-8 col-6">
-                            {{ auth()->user()->role->name }}
+                           @if ($data->role)
+                           {{ $data->role->name }}
+                           @else
+                           no role
+                           @endif 
                         </div>
                     </div>
-                    </hr>
-
-
+                    @endforeach
 
                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                         Facebook, Google, Twitter Account that are connected to this account
@@ -89,4 +90,4 @@
 </div>
 </div>
 </div>
-@endsection
+@include('frontend.partial.footer')

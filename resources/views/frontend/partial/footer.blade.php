@@ -1,60 +1,107 @@
-<footer>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    @notifyCss
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{'/frontend'}}/assets/images/favicon.png" type="">
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{{'/frontend'}}/assets/css/bootstrap.css" />
+    <!-- font awesome style -->
+    <link href="{{'/frontend'}}/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{{'/frontend'}}/assets/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{{'/frontend'}}/assets/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="first-item">
-                        <div class="logo">
-                            <img src="{{'/frontend'}}/assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
+                <div class="col-md-4">
+                    <div class="full">
+                        <div class="logo_footer">
+                            <a href="#"><img width="210" src="{{'/frontend'}}/assets/images/logo.png" alt="#" /></a>
                         </div>
-                        <ul>
-                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
-                            <li><a href="#">hexashop@company.com</a></li>
-                            <li><a href="#">010-020-0340</a></li>
-                        </ul>
+                        <div class="information_f">
+                            <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
+                            <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
+                            <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <h4>Shopping &amp; Categories</h4>
-                    <ul>
-                        <li><a href="#">Men’s Shopping</a></li>
-                        <li><a href="#">Women’s Shopping</a></li>
-                        <li><a href="#">Kid's Shopping</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Useful Links</h4>
-                    <ul>
-                        <li><a href="#">Homepage</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h4>Help &amp; Information</h4>
-                    <ul>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">FAQ's</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Tracking ID</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-12">
-                    <div class="under-footer">
-                        <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
-
-                            <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
-
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank" title="free & premium responsive templates">ThemeWagon</a>
-                        </p>
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Menu</h3>
+                                        <ul>
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonial</a></li>
+                                            <li><a href="#">Blog</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="widget_menu">
+                                        <h3>Account</h3>
+                                        <ul>
+                                            <li><a href="#">Account</a></li>
+                                            <li><a href="#">Checkout</a></li>
+                                            <li><a href="#">Login</a></li>
+                                            <li><a href="#">Register</a></li>
+                                            <li><a href="#">Shopping</a></li>
+                                            <li><a href="#">Widget</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="widget_menu">
+                                <h3>Newsletter</h3>
+                                <div class="information_f">
+                                    <p>Subscribe by our newsletter and get update protidin.</p>
+                                </div>
+                                <div class="form_sub">
+                                    <form>
+                                        <fieldset>
+                                            <div class="field">
+                                                <input type="email" placeholder="Enter Your Mail" name="email" />
+                                                <input type="submit" value="Subscribe" />
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+    <div class="cpy_">
+        <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+
+            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+
+        </p>
+    </div>
+    <script src="{{'/frontend'}}/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="{{'/frontend'}}/assets/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="{{'/frontend'}}/assets/js/bootstrap.js"></script>
+    <!-- custom js -->
+    <script src="{{'/frontend'}}/assets/js/custom.js"></script>
+    @notifyJs
+</body>
+
+</html>

@@ -1,151 +1,94 @@
-<header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
-                            <img src="{{'/frontend'}}/assets/images/logo.png">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#men">Men's</a></li>
-                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
-                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li>
-                            <li class="submenu">
-                                <a href="javascript:;">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </li>
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a rel="nofollow" href="https://templatemo.com/page/4" target="_blank">Template Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   @notifyCss
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>eCommerce</title>
+   <link rel="shortcut icon" href="{{'/frontend'}}/assets/images/favicon.png" type="">
+   <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" type="text/css" href="{{'/frontend'}}/assets/css/bootstrap.css" />
+   <!-- Bootstrap CDN -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <!-- Font Awesome -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+   <!-- Bootstrap Icons -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="{{'/frontend'}}/assets/css/style.css" rel="stylesheet" />
+   <!-- Responsive style -->
+   <link href="{{'/frontend'}}/assets/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+   <header class="header_section">
+      <div class="container">
+         <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="{{route('frontend.home')}}"><img width="250" src="{{'/frontend'}}/assets/images/logo.png" alt="#" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class=""> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{{route('frontend.home')}}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonial.html">Testimonial</a></li>
+                     </ul>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="product.html">Products</a>
+                  </li>
+                 
+                  @guest('customerGuard')
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{route('customer.login')}}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{route('customer.registration')}}">Registration</a>
+                  </li>
+                  @endguest
+                  @auth('customerGuard')
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{route('customer.profile')}}">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{route('customer.logout')}}">Logout</a>
+                  </li>
+                  @endauth
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{route('cart.view')}}">
+                     <span class="mr-2">Cart</span><i class="bi bi-cart-fill"></i>
+                     </a>
+                  </li>
+                  <form class="form-inline">
+                     <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                     </button>
+                  </form>
+               </ul>
             </div>
-        </div>
-    </header>
-    <div class="main-banner" id="top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="left-content">
-                        <div class="thumb">
-                            <div class="inner-content">
-                                <h4>We Are Hexashop</h4>
-                                <span>Awesome, clean &amp; creative HTML5 Template</span>
-                                <div class="main-border-button">
-                                    <a href="#">Purchase Now!</a>
-                                </div>
-                            </div>
-                            <img src="{{'/frontend'}}/assets/images/left-banner-image.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="right-content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Women</h4>
-                                            <span>Best Clothes For Women</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Women</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{'/frontend'}}/assets/images/baner-right-image-01.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Men</h4>
-                                            <span>Best Clothes For Men</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Men</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{'/frontend'}}/assets/images/baner-right-image-02.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Kids</h4>
-                                            <span>Best Clothes For Kids</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Kids</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{'/frontend'}}/assets/images/baner-right-image-03.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Accessories</h4>
-                                            <span>Best Trend Accessories</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Accessories</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
-                                                <div class="main-border-button">
-                                                    <a href="#">Discover More</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="{{'/frontend'}}/assets/images/baner-right-image-04.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+         </nav>
+      </div>
+   </header>
+   <!-- Bootstrap JS and dependencies -->
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   <script src="{{'/frontend'}}/assets/js/jquery-3.4.1.min.js"></script>
+   <!-- Popper JS -->
+   <script src="{{'/frontend'}}/assets/js/popper.min.js"></script>
+   <!-- Bootstrap JS -->
+   <script src="{{'/frontend'}}/assets/js/bootstrap.js"></script>
+   <!-- Custom JS -->
+   <script src="{{'/frontend'}}/assets/js/custom.js"></script>
+   @notifyJs
+</body>
+
+</html>

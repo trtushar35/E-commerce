@@ -1,113 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-
-    @notifyCss
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
-    <title>Hexashop Ecommerce HTML CSS Template</title>
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="{{'/frontend'}}/assets/css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="{{'/frontend'}}/assets/css/font-awesome.css">
-
-    <link rel="stylesheet" href="{{'/frontend'}}/assets/css/templatemo-hexashop.css">
-
-    <link rel="stylesheet" href="{{'/frontend'}}/assets/css/owl-carousel.css">
-
-    <link rel="stylesheet" href="{{'/frontend'}}/assets/css/lightbox.css">
-    <!--
-
-TemplateMo 571 Hexashop
-
-https://templatemo.com/tm-571-hexashop
-
--->
+   @notifyCss
+   <!-- Basic -->
+   <meta charset="utf-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+   <!-- Site Metas -->
+   <meta name="keywords" content="" />
+   <meta name="description" content="" />
+   <meta name="author" content="" />
+   <link rel="shortcut icon" href="{{'/frontend'}}/assets/images/favicon.png" type="">
+   <title>eCommerce</title>
+   <!-- bootstrap cdn -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <!-- bootstrap core css -->
+   <link rel="stylesheet" type="text/css" href="{{'/frontend'}}/assets/css/bootstrap.css" />
+   <!-- font awesome style -->
+   <link href="{{'/frontend'}}/assets/css/font-awesome.min.css" rel="stylesheet" />
+   <!-- Custom styles for this template -->
+   <link href="{{'/frontend'}}/assets/css/style.css" rel="stylesheet" />
+   <!-- responsive style -->
+   <link href="{{'/frontend'}}/assets/css/responsive.css" rel="stylesheet" />
 </head>
 
 <body>
-    <!-- ***** Header Area Start ***** -->
-    @include('frontend.partial.header')
-    
-    <!-- ***** Header Area End ***** -->
+   <div class="hero_area">
+      <!-- header section strats -->
+      @include('frontend.partial.header')
+      <!-- end header section -->
+      <!-- slider section -->
+      @include('frontend.partial.slider')
+      <!-- end slider section -->
+   </div>
+   <!-- why section -->
 
-    <!-- ***** Main Banner Area Start ***** -->
-    
-    <!-- ***** Main Banner Area End ***** -->
+   <!-- end why section -->
 
-    <!-- ***** Men Area Starts ***** -->
-    
-    <!-- ***** Men Area Ends ***** -->
+   <!-- arrival section -->
 
-    <!-- ***** Women Area Starts ***** -->
-    
-    <!-- ***** Women Area Ends ***** -->
+   <!-- end arrival section -->
 
-    <!-- ***** Kids Area Starts ***** -->
-    @include('notify::components.notify')
-    @yield('content')
-    <!-- ***** Kids Area Ends ***** -->
+   <!-- product section -->
+   <section class="product_section layout_padding">
+      <div class="container">
+         @include('notify::components.notify')
+         @yield('content')
+      </div>
+   </section>
+   <!-- end product section -->
 
-    <!-- ***** Explore Area Starts ***** -->
-    
-    <!-- ***** Explore Area Ends ***** -->
+   <!-- subscribe section -->
+   @include('frontend.partial.subscription')
+   <!-- end subscribe section -->
 
-    <!-- ***** Social Area Starts ***** -->
-    
-    <!-- ***** Social Area Ends ***** -->
+   <!-- client section -->
+   @include('frontend.partial.comments')
+   <!-- end client section -->
+   <!-- footer start -->
+   @include('frontend.partial.footer')
+   <!-- footer end -->
 
-    <!-- ***** Subscribe Area Starts ***** -->
-    
-    <!-- ***** Subscribe Area Ends ***** -->
+   <!-- js cdn bootstrap -->
+   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <!-- ***** Footer Start ***** -->
-    @include('frontend.partial.footer')
 
-    <!-- jQuery -->
-    <script src="{{'/frontend'}}/assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="{{'/frontend'}}/assets/js/popper.js"></script>
-    <script src="{{'/frontend'}}/assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="{{'/frontend'}}/assets/js/owl-carousel.js"></script>
-    <script src="{{'/frontend'}}/assets/js/accordions.js"></script>
-    <script src="{{'/frontend'}}/assets/js/datepicker.js"></script>
-    <script src="{{'/frontend'}}/assets/js/scrollreveal.min.js"></script>
-    <script src="{{'/frontend'}}/assets/js/waypoints.min.js"></script>
-    <script src="{{'/frontend'}}/assets/js/jquery.counterup.min.js"></script>
-    <script src="{{'/frontend'}}/assets/js/imgfix.min.js"></script>
-    <script src="{{'/frontend'}}/assets/js/slick.js"></script>
-    <script src="{{'/frontend'}}/assets/js/lightbox.js"></script>
-    <script src="{{'/frontend'}}/assets/js/isotope.js"></script>
-
-    <!-- Global Init -->
-    <script src="{{'/frontend'}}/assets/js/custom.js"></script>
-
-    <script>
-        $(function() {
-            var selectedClass = "";
-            $("p").click(function() {
-                selectedClass = $(this).attr("data-rel");
-                $("#portfolio").fadeTo(50, 0.1);
-                $("#portfolio div").not("." + selectedClass).fadeOut();
-                setTimeout(function() {
-                    $("." + selectedClass).fadeIn();
-                    $("#portfolio").fadeTo(50, 1);
-                }, 500);
-
-            });
-        });
-    </script>
-
+   <!-- jQery -->
+   <script src="{{'/frontend'}}/assets/js/jquery-3.4.1.min.js"></script>
+   <!-- popper js -->
+   <script src="{{'/frontend'}}/assets/js/popper.min.js"></script>
+   <!-- bootstrap js -->
+   <script src="{{'/frontend'}}/assets/js/bootstrap.js"></script>
+   <!-- custom js -->
+   <script src="{{'/frontend'}}/assets/js/custom.js"></script>
+   @notifyJs
 </body>
 
 </html>

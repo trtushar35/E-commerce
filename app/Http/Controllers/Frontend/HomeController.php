@@ -10,9 +10,9 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $products=Product::all();
+        $products=Product::with('category','brand')->get();
         // dd($products->all());
-        return view('frontend.pages.customer.home',compact('products'));
+        return view('frontend.pages.home',compact('products'));
     }
 
 

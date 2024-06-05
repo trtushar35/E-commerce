@@ -17,7 +17,9 @@ class CustomerController extends Controller
 
 
     public function profile(){
-        return view('frontend.pages.customer.profile');
+        $customer = Customer::where('id', auth('customerGuard')->user()->id)->get();
+        // dd($customer);
+        return view('frontend.pages.customer.profile', compact('customer'));
     }
 
 
@@ -44,6 +46,7 @@ class CustomerController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'address' => $request->address,
             'password' => bcrypt($request->password),
             'image' => $fileName,
         ]);

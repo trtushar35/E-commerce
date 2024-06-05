@@ -11,7 +11,6 @@ class ProductController extends Controller
     public function singleProductView($productId)
     {
         $singleProduct=Product::find($productId);
-
         return view('frontend.pages.product.productView',compact('singleProduct'));
     }
 }

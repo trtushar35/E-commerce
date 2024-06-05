@@ -33,12 +33,17 @@ Route::get('/search/products', [FrontendHomeController::class, 'searchProduct'])
 Route::get('/registration', [FrontendCustomerController::class, 'registration'])->name('customer.registration');
 Route::post('/reg-form-post', [FrontendCustomerController::class, 'store'])->name('registration.store');
 
+Route::get('/cart-view', [FrontendCartController::class, 'cartView'])->name('cart.view');
+Route::get('/add-to-cart/{id}', [FrontendCartController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/clear-cart-item', [FrontendCartController::class, 'clearCartItem'])->name('clear.cart.item');
+Route::get('/delete-cart-item/{id}', [FrontendCartController::class, 'deleteCartItem'])->name('delete.cart.item');
+
 Route::get('/login', [FrontendCustomerController::class, 'login'])->name('customer.login');
 Route::post('/login-post', [FrontendCustomerController::class, 'loginPost'])->name('customer.loginPost');
 
-Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product');
+Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product.view');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth:customerGuard'], function () {
     Route::get('/logout', [FrontendCustomerController::class, 'logout'])->name('customer.logout');
 
     Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('customer.profile');

@@ -1,9 +1,8 @@
-@extends('frontend.master')
+@include('frontend.partial.header')
 
-@section('content')
+@include('notify::components.notify')
 
-
-<form action="{{route('profile.update',$users->id)}}"method="post" enctype="multipart/form-data">
+<form action="{{route('profile.update',$users->id)}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="container">
@@ -15,7 +14,7 @@
                         <div class="card-title mb-4">
                             <div class="d-flex justify-content-start">
                                 <div class="image-container">
-                                <input type="file" value="{{$users->user_image}}" class="form-control" alt="Upload Image" class="rounded-circle" width="120" name="image">
+                                    <input type="file" value="{{$users->user_image}}" class="form-control" alt="Upload Image" class="rounded-circle" width="120" name="image">
                                     <div class="middle">
 
                                     </div>
@@ -62,44 +61,45 @@
                         <hr />
 
                         <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
-                            <label style="font-weight:bold;">Address </label>
+                            <div class="col-sm-3 col-md-2 col-5">
+                                <label style="font-weight:bold;">Address </label>
+                            </div>
+                            <div class="col-md-8 col-6">
+                                <input type="text" value="{{$users->address}}" placeholder="Enter address" name="address">
+                            </div>
                         </div>
-                        <div class="col-md-8 col-6">
-                        <input type="text" value="{{$users->address}}" placeholder="Enter address" name="address">
-                        </div>
-                    </div>
-                    <hr />
+                        <hr />
 
-                    <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
-                            <label style="font-weight:bold;">Role</label>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2 col-5">
+                                <label style="font-weight:bold;">Role</label>
+                            </div>
+                            <div class="col-md-8 col-6">
+                                @if (auth('customerGuard')->check() && auth('customerGuard')->user()->role)
+                                {{ auth('customerGuard')->user()->role->name }}
+                                @else
+                                no role
+                                @endif
+                            </div>
                         </div>
-                        <div class="col-md-8 col-6">
-                           @if (auth('customerGuard')->check() && auth('customerGuard')->user()->role)
-                           {{ auth('customerGuard')->user()->role->name }}
-                           @else
-                           no role
-                           @endif 
-                        </div>
-                    </div>
-                    </hr>
+                        </hr>
                         <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
                             Facebook, Google, Twitter Account that are connected to this account
                         </div>
                         <div class="row">
-                                <div class="col-sm-12">
-                                    <button class="btn btn-info ">Save</button>
-                                </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-info ">Save</button>
+                            </div>
+                        </div>
+
                     </div>
+
 
                 </div>
 
-
             </div>
-
         </div>
     </div>
 </form>
 
-@endsection
+@include('frontend.partial.footer')

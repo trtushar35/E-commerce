@@ -1,6 +1,6 @@
 @include('frontend.partial.header')
 <style>
-  input.form-control{
+  input.form-control {
     text-transform: none !important;
   }
 </style>
@@ -27,5 +27,9 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 @include('frontend.partial.footer')

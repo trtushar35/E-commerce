@@ -44,7 +44,7 @@
                   <li class="nav-item">
                      <a class="nav-link" href="product.html">Products</a>
                   </li>
-                 
+
                   @guest('customerGuard')
                   <li class="nav-item">
                      <a class="nav-link" href="{{route('customer.login')}}">Login</a>
@@ -54,29 +54,31 @@
                   </li>
                   @endguest
                   @auth('customerGuard')
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{route('customer.profile')}}">Profile</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="{{route('customer.logout')}}">Logout</a>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Profile <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="{{route('customer.profile')}}">Profile</a></li>
+                        <li><a href="{{route('order.list')}}">Order List</a></li>
+                        <li><a href="{{route('customer.logout')}}">Logout</a></li>
+                     </ul>
                   </li>
                   @endauth
                   <li class="nav-item">
                      <a class="nav-link" href="{{route('cart.view')}}">
-                     <span class="mr-2">Cart</span><i class="bi bi-cart-fill"></i>
+                        <span class="mr-2">Cart</span><i class="bi bi-cart-fill"></i>
                      </a>
                   </li>
-                  <form class="form-inline">
-                     <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                     </button>
-                  </form>
                </ul>
             </div>
          </nav>
       </div>
    </header>
+
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
    <!-- Bootstrap JS and dependencies -->
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

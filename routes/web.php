@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\Backend\BrandController;
-use App\Http\Controllers\Backend\CategoryController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\HomeController;
-use App\Http\Controllers\Backend\PermissionController;
-use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Frontend\SslCommerzPaymentController;
+use App\Http\Controllers\Frontend\CartController as FrontendCartController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
-use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 use App\Http\Controllers\Frontend\OrderController as FrontendOrderController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
-use App\Http\Controllers\Frontend\CartController as FrontendCartController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CustomerController as FrontendCustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 //wesite routes
 
 Route::get('/', [FrontendHomeController::class, 'home'])->name('frontend.home');
+
+Route::get('/all-product', [FrontendHomeController::class, 'allProduct'])->name('all.product');
 
 Route::get('/search/products', [FrontendHomeController::class, 'searchProduct'])->name('search.product');
 
@@ -43,12 +47,33 @@ Route::post('/login-post', [FrontendCustomerController::class, 'loginPost'])->na
 
 Route::get('/single-product/{id}', [FrontendProductController::class, 'singleProductView'])->name('single.product.view');
 
-Route::group(['middleware' => 'auth:customerGuard'], function () {
+Route::middleware('auth:customerGuard')->group( function () {
     Route::get('/logout', [FrontendCustomerController::class, 'logout'])->name('customer.logout');
 
     Route::get('/profile', [FrontendCustomerController::class, 'profile'])->name('customer.profile');
     Route::get('/profile/edit/{id}', [FrontendCustomerController::class, 'profileEdit'])->name('profile.edit');
     Route::put('/profile/update/{id}', [FrontendCustomerController::class, 'profileUpdate'])->name('profile.update');
+
+    Route::get('/checkout/form', [FrontendOrderController::class, 'checkoutForm'])->name('checkout.form');
+    Route::post('/place/order', [FrontendOrderController::class, 'placeOrder'])->name('place.order');
+
+    Route::get('/order/list', [FrontendOrderController::class, 'orderList'])->name('order.list');
+    Route::get('/cancel/order/{id}', [FrontendOrderController::class, 'cancelOrder'])->name('cancel.order');
+    Route::get('/make-payment/{id}', [FrontendOrderController::class, 'makePayment'])->name('make.payment');
+
+    // SSLCOMMERZ Start
+    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+    
+    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+    
+    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+    
+    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+    //SSLCOMMERZ END
 });
 
 
@@ -98,12 +123,14 @@ Route::group(['prefix' => 'admin'], function () {
             Route::put('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
             Route::get('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 
-            Route::get('/role/list', [RoleController::class, 'list' ])->name('role.list');
-            Route::get('/role/create', [RoleController::class, 'create' ])->name('role.create');
-            Route::post('/role/store', [RoleController::class, 'store' ])->name('role.store');
-            
-            Route::get('/permission-assign/{role_id}', [PermissionController::class, 'permission' ])->name('role.assign');
-            Route::post('/permission-assign/{role_id}', [PermissionController::class, 'permissionAssign' ])->name('assign.permission');
+            Route::get('/order/list', [OrderController::class, 'list'])->name('order.details');
+
+            Route::get('/role/list', [RoleController::class, 'list'])->name('role.list');
+            Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+            Route::post('/role/store', [RoleController::class, 'store'])->name('role.store');
+
+            Route::get('/permission-assign/{role_id}', [PermissionController::class, 'permission'])->name('role.assign');
+            Route::post('/permission-assign/{role_id}', [PermissionController::class, 'permissionAssign'])->name('assign.permission');
         });
     });
 });

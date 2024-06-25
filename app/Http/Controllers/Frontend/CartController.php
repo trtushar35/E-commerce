@@ -36,6 +36,7 @@ class CartController extends Controller
                     'image' => $product->image,
                     'quantity' => 1,
                     'subtotal' => 1 * $product->price,
+                    'brand_name' => $product->brand->name,
                 ];
 
                 session()->put('vcart', $cart);
@@ -51,6 +52,7 @@ class CartController extends Controller
                 'image' => $product->image,
                 'quantity' => 1,
                 'subtotal' => 1 * $product->price,
+                'brand_name' => $product->brand->name,
             ];
             session()->put('vcart', $newCart);
             notify()->success('Product added to cart successfully.');

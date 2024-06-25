@@ -138,19 +138,14 @@
 </head>
 
 <body>
-
     @include('notify::components.notify')
     <div class="heading_container heading_center">
         <h2>
-            Found <span>products</span>
+            Our <span>products</span>
         </h2>
     </div>
-    <div class="ml d-flex justify-content-center">
-        <h6>Search result for : "{{ request()->search }}" found {{$products->count()}} products.</h6>
-    </div>
     <div class="row">
-        @if($products->count()>0)
-        @foreach ($products as $data)
+        @foreach ($allProduct as $data)
         <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="box">
                 <a href="{{route('single.product.view', $data->id)}}">
@@ -164,7 +159,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="img-box overflow-hidden" style="width: 100%; height: 100px;">
+                    <div class="img-box">
                         <img src="{{url('/uploads/', $data->image)}}" alt="Product Image">
                     </div>
                     <div class="detail-box">
@@ -179,10 +174,6 @@
             </div>
         </div>
         @endforeach
-        @else
-
-        <h1>No product found.</h1>
-        @endif
     </div>
     @notifyJs
 </body>

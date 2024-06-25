@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('customers')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('price');
+            $table->string('transaction_id')->unique();
+            $table->integer('quantity');
+            $table->string('subtotal');
+            $table->string('status');
+            $table->string('payment_type');
+            $table->string('payment_status')->nullable();
             $table->timestamps();
         });
     }

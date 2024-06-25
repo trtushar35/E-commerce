@@ -38,16 +38,11 @@
 
                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 <!-- Data -->
-                                <p><strong>{{ $item['name'] }}</strong></p>
-                                <p>Color: blue</p>
-                                <p>Size: M</p>
-                                <a href="{{route('delete.cart.item', $item['id'])}}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-sm me-1 mb-2" data-mdb-tooltip-init title="Remove item">
+                                <p><strong>Brand: {{ $item['brand_name']}}</strong></p>
+                                <p><strong>Name: {{ $item['name'] }}</strong></p>
+                                <a href="{{route('delete.cart.item', $item['id'])}}" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-sm me-1 mb-2" data-mdb-tooltip-init title="Remove item">
                                     <i class="fas fa-trash"></i>
                                 </a>
-                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-sm mb-2" data-mdb-tooltip-init title="Move to the wish list">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <!-- Data -->
                             </div>
 
                             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
@@ -138,9 +133,9 @@
                             </li>
                         </ul>
 
-                        <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block">
+                        <a type="button" href="{{route('checkout.form', ['total' => $total + $shipping])}}" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block">
                             Go to checkout
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

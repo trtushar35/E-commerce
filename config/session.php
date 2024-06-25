@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+use PhpOption\None;
 
 return [
 
@@ -196,7 +197,7 @@ return [
     |
     */
 
-    'same_site' => 'lax',
+    'same_site' => null,
 
     /*
     |--------------------------------------------------------------------------

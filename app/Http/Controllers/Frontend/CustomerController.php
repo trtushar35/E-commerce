@@ -57,7 +57,6 @@ class CustomerController extends Controller
 
 
     public function store(Request $request){
-        $role = Role::where('name', 'customer')->first();
         //dd($request->all());
         Customer::Create([
             'name' => $request->name,
@@ -67,7 +66,7 @@ class CustomerController extends Controller
         ]);
 
         notify()->success('Customer Registration successful.');
-        return redirect()->back();
+        return redirect()->route('customer.login');
     }
 
 

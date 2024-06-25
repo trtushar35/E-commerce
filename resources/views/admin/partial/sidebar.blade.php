@@ -40,7 +40,7 @@
                 </a>
             </li>            
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="{{route('order.details')}}">
                     <i class="bi bi-grid"></i>
                     <span>Order Details</span>
                 </a>

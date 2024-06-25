@@ -15,6 +15,10 @@ class HomeController extends Controller
         return view('frontend.pages.home',compact('products'));
     }
 
+    public function allProduct() {
+        $allProduct = Product::all();
+        return view('frontend.pages.allProduct', compact('allProduct'));
+    }
 
     public function searchProduct(Request $request)
     {
